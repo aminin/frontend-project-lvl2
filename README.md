@@ -1,2 +1,3 @@
-### Hexlet tests and linter status:
-![Actions Status](/workflows/hexlet-check/badge.svg)
+# Вычислитель отличий
+
+[![Actions Status](https://github.com/aminin/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/aminin/frontend-project-lvl2)
