@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/aminin/frontend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^6.2.0"
+    "commander": "^6.2.0",
+    "lodash": "^4.17.20"
   }
 }
