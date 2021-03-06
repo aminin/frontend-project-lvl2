@@ -6,17 +6,17 @@ const readFile = (filePath) => fs.readFileSync(path.resolve(filePath));
 
 const diffByState = {
   added: ({ key, nuevo }) => ([
-    `  + ${key}: ${nuevo}`
+    `  + ${key}: ${nuevo}`,
   ]),
   deleted: ({ key, viejo }) => ([
-    `  - ${key}: ${viejo}`
+    `  - ${key}: ${viejo}`,
   ]),
   changed: ({ key, viejo, nuevo }) => ([
     `  - ${key}: ${viejo}`,
     `  + ${key}: ${nuevo}`,
   ]),
   unchanged: ({ key, viejo }) => ([
-    `    ${key}: ${viejo}`
+    `    ${key}: ${viejo}`,
   ]),
 };
 
