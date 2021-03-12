@@ -2,7 +2,7 @@ import { describe, it, expect } from '@jest/globals';
 
 import genDiff from '../src/genDiff.js';
 
-import getFixturePath from './getFixturePath';
+import { getFixturePath, getFixture } from './_utils.js';
 
 describe('genDiff', () => {
   it('сравнивает плоские json-файлы', () => {
@@ -35,5 +35,19 @@ describe('genDiff', () => {
   + verbose: true
 }
     `.trim());
+  });
+
+  it('сравнивает вложенные json-файлы', () => {
+    expect(genDiff(
+      getFixturePath('step6-file1.json'),
+      getFixturePath('step6-file2.json'),
+    )).toBe(getFixture('step6-result.txt').toString().trim());
+  });
+
+  it('сравнивает вложенные yaml-файлы', () => {
+    expect(genDiff(
+      getFixturePath('step6-file1.yaml'),
+      getFixturePath('step6-file2.yaml'),
+    )).toBe(getFixture('step6-result.txt').toString().trim());
   });
 });

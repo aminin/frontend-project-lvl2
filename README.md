@@ -14,3 +14,7 @@
 ### Сравнение плоских файлов yaml
 
 [![Usage](images/step5.cast.gif)](https://asciinema.org/a/rUvibmEZA8GKFx4MA8u4UkH7H)
+
+### Рекурсивное сравнение
+
+[![Usage](images/step6.cast.gif)](https://asciinema.org/a/3rtAXnDN63TwSpO8kwNZO5cQg)
