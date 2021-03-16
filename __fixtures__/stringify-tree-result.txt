@@ -1,0 +1,11 @@
+{
+    follow: false
+    host: hexlet.io
+    nested: {
+        some: 123
+    }
+    arr: [
+        3
+        2
+    ]
+}

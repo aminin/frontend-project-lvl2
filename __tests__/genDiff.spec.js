@@ -7,47 +7,29 @@ import { getFixturePath, getFixture } from './_utils.js';
 describe('genDiff', () => {
   it('сравнивает плоские json-файлы', () => {
     expect(genDiff(
-      getFixturePath('file1.json'),
-      getFixturePath('file2.json'),
-    )).toBe(`
-{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}
-    `.trim());
+      getFixturePath('step3-file1.json'),
+      getFixturePath('step3-file2.json'),
+    )).toBe(getFixture('step3-result.txt').trim());
   });
 
   it('сравнивает плоские yaml-файлы', () => {
     expect(genDiff(
-      getFixturePath('file1.yaml'),
-      getFixturePath('file2.yaml'),
-    )).toBe(`
-{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}
-    `.trim());
+      getFixturePath('step5-file1.yaml'),
+      getFixturePath('step5-file2.yaml'),
+    )).toBe(getFixture('step3-result.txt').trim());
   });
 
   it('сравнивает вложенные json-файлы', () => {
     expect(genDiff(
       getFixturePath('step6-file1.json'),
       getFixturePath('step6-file2.json'),
-    )).toBe(getFixture('step6-result.txt').toString().trim());
+    )).toBe(getFixture('step6-result.txt').trim());
   });
 
   it('сравнивает вложенные yaml-файлы', () => {
     expect(genDiff(
       getFixturePath('step6-file1.yaml'),
       getFixturePath('step6-file2.yaml'),
-    )).toBe(getFixture('step6-result.txt').toString().trim());
+    )).toBe(getFixture('step6-result.txt').trim());
   });
 });

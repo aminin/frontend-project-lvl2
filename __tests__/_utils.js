@@ -7,6 +7,6 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filePath) => fs.readFileSync(resolve(filePath));
-const getFixture = (filename) => readFile(getFixturePath(filename));
+const getFixture = (filename) => readFile(getFixturePath(filename)).toString();
 
 export { getFixturePath, getFixture };

@@ -1,18 +1,14 @@
 import { describe, it, expect } from '@jest/globals';
 
 import { stringify } from '../src/formatters/stylish.js';
+import { getFixture } from './_utils';
 
 describe('stringify', () => {
   it('выводит плоский объект', () => {
     expect(stringify({
       follow: false,
       host: 'hexlet.io',
-    })).toBe(`
-{
-    follow: false
-    host: hexlet.io
-}
-    `.trim());
+    })).toBe(getFixture('stringify-flat-result.txt').trim());
   });
 
   it('выводит вложенный объект', () => {
@@ -21,18 +17,6 @@ describe('stringify', () => {
       host: 'hexlet.io',
       nested: { some: 123 },
       arr: [3, 2],
-    })).toBe(`
-{
-    follow: false
-    host: hexlet.io
-    nested: {
-        some: 123
-    }
-    arr: [
-        3
-        2
-    ]
-}
-    `.trim());
+    })).toBe(getFixture('stringify-tree-result.txt').trim());
   });
 });
