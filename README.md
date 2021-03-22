@@ -18,3 +18,7 @@
 ### Рекурсивное сравнение
 
 [![Usage](images/step6.cast.gif)](https://asciinema.org/a/3rtAXnDN63TwSpO8kwNZO5cQg)
+
+### Плоский формат
+
+[![Usage](images/step6.cast.gif)](https://asciinema.org/a/c47VYfsmuJT7sejg0HQRgg0az)
