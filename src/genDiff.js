@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import { parse, PARSER_FORMAT_ANY, PARSER_FORMAT_JSON, PARSER_FORMAT_YAML } from './parser.js';
+import {
+  parse, PARSER_FORMAT_ANY, PARSER_FORMAT_JSON, PARSER_FORMAT_YAML,
+} from './parser.js';
 import genObjDiff from './genObjDiff.js';
 import formatObjDiff from './formatters/index.js';
 

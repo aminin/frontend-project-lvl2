@@ -5,7 +5,7 @@ import {
 
 const getFQPN = (key, parents = []) => [...parents, key].join('.');
 
-export const stringify = (value,) => {
+export const stringify = (value) => {
   if (_.isObject(value) || _.isArray()) {
     return '[complex value]';
   }

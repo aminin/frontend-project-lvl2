@@ -29,16 +29,23 @@ describe('genDiff', () => {
   describe('сравнивает вложенные yaml-файлы', () => {
     it('в формате stylish', () => {
       expect(genDiff(
-          getFixturePath('step6-file1.yaml'),
-          getFixturePath('step6-file2.yaml'),
+        getFixturePath('step6-file1.yaml'),
+        getFixturePath('step6-file2.yaml'),
       )).toBe(getFixture('step6-result.txt').trim());
     });
     it('в формате plain', () => {
       expect(genDiff(
-          getFixturePath('step6-file1.yaml'),
-          getFixturePath('step6-file2.yaml'),
-          'plain',
+        getFixturePath('step6-file1.yaml'),
+        getFixturePath('step6-file2.yaml'),
+        'plain',
       )).toBe(getFixture('step7-result.txt').trim());
+    });
+    it('в формате json', () => {
+      expect(JSON.parse(genDiff(
+        getFixturePath('step6-file1.yaml'),
+        getFixturePath('step6-file2.yaml'),
+        'json',
+      ))).toMatchObject(JSON.parse(getFixture('step8-result.json')));
     });
   });
 });
