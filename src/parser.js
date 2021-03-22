@@ -17,6 +17,7 @@ const parse = (data, format = PARSER_FORMAT_ANY) => {
     return parsers[format](data);
   }
   if (format === PARSER_FORMAT_ANY) {
+    // eslint-disable-next-line no-restricted-syntax
     for (const doParse of Object.values(parsers)) {
       try {
         return doParse(data);

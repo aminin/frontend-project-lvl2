@@ -6,6 +6,7 @@ env:
 
 plugins:
   - jest
+  - fp
 
 extends:
   - 'airbnb-base'
@@ -18,14 +19,14 @@ parserOptions:
 rules:
   no-console: 0
   import/extensions: 0
-  no-await-in-loop: 0
-  no-restricted-syntax:
-    - 'error'
-#    - 'ForInStatement'
-#    - 'ForOfStatement'
-    - 'LabeledStatement'
-    - 'WithStatement'
   # разрешает подчёркивание в именах только для двух констант
   no-underscore-dangle:
     - 2
     - allow: [__filename, __dirname]
+  fp/no-nil: 0
+  fp/no-unused-expression: 0
+  fp/no-throw: 0
+  fp/no-mutating-methods:
+    - error
+    - allowedObjects:
+      - "_"

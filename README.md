@@ -41,8 +41,8 @@ npm link
 
 ### Плоский формат
 
-[![Usage](images/step6.cast.gif)](https://asciinema.org/a/c47VYfsmuJT7sejg0HQRgg0az)
+[![Usage](images/step7.cast.gif)](https://asciinema.org/a/c47VYfsmuJT7sejg0HQRgg0az)
 
 ### JSON формат
 
-[![Usage](images/step6.cast.gif)](https://asciinema.org/a/PpkJJRNcT9QOo7kxfJWORUd88)
+[![Usage](images/step7.cast.gif)](https://asciinema.org/a/PpkJJRNcT9QOo7kxfJWORUd88)
