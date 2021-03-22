@@ -49,6 +49,7 @@ export {
   parseYaml,
   isJson,
   isYaml,
+  PARSER_FORMAT_ANY,
   PARSER_FORMAT_JSON,
   PARSER_FORMAT_YAML,
 };

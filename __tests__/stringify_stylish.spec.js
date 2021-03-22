@@ -3,7 +3,7 @@ import { describe, it, expect } from '@jest/globals';
 import { stringify } from '../src/formatters/stylish.js';
 import { getFixture } from './_utils';
 
-describe('stringify', () => {
+describe('stringify stylish', () => {
   it('выводит плоский объект', () => {
     expect(stringify({
       follow: false,
