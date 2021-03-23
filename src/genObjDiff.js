@@ -11,39 +11,22 @@ const genObjDiff = (obj1, obj2) => {
 
   return Object.fromEntries(keys.map((key) => {
     if (!_.has(obj1, key)) {
-      return [key, {
-        type: TYPE_ADDED,
-        nuevo: obj2[key],
-      }];
+      return [key, { type: TYPE_ADDED, nuevo: obj2[key] }];
     }
 
     if (!_.has(obj2, key)) {
-      return [key, {
-        type: TYPE_DELETED,
-        viejo: obj1[key],
-      }];
+      return [key, { type: TYPE_DELETED, viejo: obj1[key] }];
     }
 
     if (_.isPlainObject(obj1[key]) && _.isPlainObject(obj2[key])) {
-      return [key, {
-        type: TYPE_NODE,
-        node: genObjDiff(obj1[key], obj2[key]),
-      }];
+      return [key, { type: TYPE_NODE, node: genObjDiff(obj1[key], obj2[key]) }];
     }
 
     if (!_.isEqual(obj1[key], obj2[key])) {
-      return [key, {
-        type: TYPE_CHANGED,
-        viejo: obj1[key],
-        nuevo: obj2[key],
-      }];
+      return [key, { type: TYPE_CHANGED, viejo: obj1[key], nuevo: obj2[key] }];
     }
 
-    return [key, {
-      type: TYPE_UNCHANGED,
-      viejo: obj1[key],
-      nuevo: obj2[key],
-    }];
+    return [key, { type: TYPE_UNCHANGED, viejo: obj1[key], nuevo: obj2[key] }];
   }));
 };
 

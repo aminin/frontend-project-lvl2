@@ -12,18 +12,29 @@ const parsers = {
   [PARSER_FORMAT_JSON]: parseJson,
 };
 
+const parseAny = (data) => {
+  const [, parsed] = Object.values(parsers).reduce(([isParsed, result], doParse) => {
+    if (!isParsed) {
+      try {
+        return [true, doParse(data)];
+      } catch {
+        // continue regardless of error
+      }
+    }
+    return [isParsed, result];
+  }, [false, undefined]);
+
+  return parsed;
+};
+
 const parse = (data, format = PARSER_FORMAT_ANY) => {
   if (parsers[format]) {
     return parsers[format](data);
   }
   if (format === PARSER_FORMAT_ANY) {
-    // eslint-disable-next-line no-restricted-syntax
-    for (const doParse of Object.values(parsers)) {
-      try {
-        return doParse(data);
-      } catch {
-        // continue regardless of error
-      }
+    const result = parseAny(data);
+    if (result) {
+      return result;
     }
   }
   throw new Error("Can't parse given data");
