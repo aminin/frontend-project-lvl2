@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import {
-  TYPE_ADDED, TYPE_CHANGED, TYPE_DELETED, TYPE_UNCHANGED, TYPE_NODE,
+  TYPE_ADDED, TYPE_CHANGED, TYPE_DELETED, TYPE_UNCHANGED, TYPE_NESTED,
 } from '../genObjDiff.js';
 
 const tab = '    ';
@@ -38,18 +38,18 @@ const diffByKeyType = {
   [TYPE_UNCHANGED]: ({ key, viejo }, depth = 0) => ([
     `    ${key}: ${stringify(viejo, depth + 1)}`,
   ]),
-  [TYPE_NODE]: ({ key, node }, depth, iter) => ([
-    `    ${key}: ${iter(node, depth + 1)}`,
+  [TYPE_NESTED]: ({ key, children }, depth, iter) => ([
+    `    ${key}: ${iter(children, depth + 1)}`,
   ]),
 };
 
 const formatStylish = (objDiff) => {
   const iter = (diff, depth = 0) => (
-    wrap(Object.entries(diff).map(([key, {
-      type, viejo, nuevo, node,
+    wrap(diff.map(([key, {
+      type, viejo, nuevo, children,
     }]) => (
       diffByKeyType[type]({
-        key, viejo, nuevo, node,
+        key, viejo, nuevo, children,
       }, depth, iter)
     )).flat(), '{', '}', tab.repeat(depth))
   );

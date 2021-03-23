@@ -8,7 +8,7 @@ describe('stringify stylish', () => {
     expect(stringify({
       follow: false,
       host: 'hexlet.io',
-    })).toBe(getFixture('stringify-flat-result.txt').trim());
+    })).toBe(getFixture('stringify-flat-result.txt'));
   });
 
   it('выводит вложенный объект', () => {
@@ -17,6 +17,6 @@ describe('stringify stylish', () => {
       host: 'hexlet.io',
       nested: { some: 123 },
       arr: [3, 2],
-    })).toBe(getFixture('stringify-tree-result.txt').trim());
+    })).toBe(getFixture('stringify-tree-result.txt'));
   });
 });

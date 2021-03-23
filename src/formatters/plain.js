@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import {
-  TYPE_ADDED, TYPE_CHANGED, TYPE_DELETED, TYPE_UNCHANGED, TYPE_NODE,
+  TYPE_ADDED, TYPE_CHANGED, TYPE_DELETED, TYPE_UNCHANGED, TYPE_NESTED,
 } from '../genObjDiff.js';
 
 const getFQPN = (key, parents = []) => [...parents, key].join('.');
@@ -28,18 +28,18 @@ const diffByKeyType = {
     `Property '${getFQPN(key, parents)}' was updated. From ${stringify(viejo)} to ${stringify(nuevo)}`,
   ]),
   [TYPE_UNCHANGED]: () => [],
-  [TYPE_NODE]: ({ key, node }, parents, iter) => ([
-    iter(node, [...parents, key]),
+  [TYPE_NESTED]: ({ key, children }, parents, iter) => ([
+    iter(children, [...parents, key]),
   ]),
 };
 
 const formatPlain = (objDiff) => {
   const iter = (diff, parents = []) => (
-    Object.entries(diff).map(([key, {
-      type, viejo, nuevo, node,
+    diff.map(([key, {
+      type, viejo, nuevo, children,
     }]) => (
       diffByKeyType[type]({
-        key, viejo, nuevo, node,
+        key, viejo, nuevo, children,
       }, parents, iter)
     )).flat().join('\n')
   );
