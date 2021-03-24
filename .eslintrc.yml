@@ -1,17 +1,23 @@
 ---
 
-env:
-  node: true
-  es2020: true
-
+# https://github.com/jest-community/eslint-plugin-jest
 plugins:
   - jest
   - fp
 
+# Правильный способ включения поддержки глобальных идентификаторов
+# https://eslint.org/docs/user-guide/configuring#specifying-environments
+env:
+  node: true
+  jest: true
+  es2020: true
+
 extends:
   - 'airbnb-base'
   - 'plugin:jest/recommended'
+  - 'plugin:fp/recommended'
 
+# Включает поддержку конструкции import.meta.url
 parserOptions:
   ecmaVersion: 11
   sourceType: module

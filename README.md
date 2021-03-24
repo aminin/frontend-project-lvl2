@@ -3,7 +3,7 @@
 [![Actions Status](https://github.com/aminin/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/aminin/frontend-project-lvl2)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c62efe46c7ce58b311f4/maintainability)](https://codeclimate.com/github/aminin/frontend-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c62efe46c7ce58b311f4/test_coverage)](https://codeclimate.com/github/aminin/frontend-project-lvl2/test_coverage)
-[![ESLint](https://github.com/aminin/frontend-project-lvl2/workflows/lint/badge.svg)](https://github.com/aminin/frontend-project-lvl2)
+[![Node CI](https://github.com/aminin/frontend-project-lvl2/workflows/Node%20CI/badge.svg)](https://github.com/aminin/frontend-project-lvl2)
 
 Утилита командной строки для вычисления отличий между файлами `json` и `yaml` (`yml`).
 
@@ -22,7 +22,7 @@
 git clone git@github.com:aminin/frontend-project-lvl2.git
 cd frontend-project-lvl2
 make
-npm link
+make link
 ```
 
 ## Примеры использования

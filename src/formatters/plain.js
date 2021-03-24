@@ -18,14 +18,14 @@ export const stringify = (value) => {
 };
 
 const diffByKeyType = {
-  [TYPE_ADDED]: ({ key, nuevo }, parents = []) => ([
-    `Property '${getFQPN(key, parents)}' was added with value: ${stringify(nuevo)}`,
+  [TYPE_ADDED]: ({ key, value2 }, parents = []) => ([
+    `Property '${getFQPN(key, parents)}' was added with value: ${stringify(value2)}`,
   ]),
   [TYPE_DELETED]: ({ key }, parents = []) => ([
     `Property '${getFQPN(key, parents)}' was removed`,
   ]),
-  [TYPE_CHANGED]: ({ key, viejo, nuevo }, parents = []) => ([
-    `Property '${getFQPN(key, parents)}' was updated. From ${stringify(viejo)} to ${stringify(nuevo)}`,
+  [TYPE_CHANGED]: ({ key, value1, value2 }, parents = []) => ([
+    `Property '${getFQPN(key, parents)}' was updated. From ${stringify(value1)} to ${stringify(value2)}`,
   ]),
   [TYPE_UNCHANGED]: () => [],
   [TYPE_NESTED]: ({ key, children }, parents, iter) => ([
@@ -36,10 +36,10 @@ const diffByKeyType = {
 const formatPlain = (objDiff) => {
   const iter = (diff, parents = []) => (
     diff.map(([key, {
-      type, viejo, nuevo, children,
+      type, value1, value2, children,
     }]) => (
       diffByKeyType[type]({
-        key, viejo, nuevo, children,
+        key, value1, value2, children,
       }, parents, iter)
     )).flat().join('\n')
   );
