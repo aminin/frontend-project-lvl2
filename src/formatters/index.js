@@ -7,9 +7,11 @@ const formatters = {
   plain: formatPlain,
 };
 
-const formatObjDiff = (objDiff, type = 'stylish') => {
-  const format = formatters[type] ?? formatters.stylish;
-  return format(objDiff);
+const formatObjDiff = (objDiff, type) => {
+  if (formatters[type] === undefined) {
+    throw new Error(`Unknown format "${type}"`);
+  }
+  return formatters[type](objDiff);
 };
 
 export default formatObjDiff;

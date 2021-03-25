@@ -1,20 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-import {
-  parse, PARSER_FORMAT_ANY, PARSER_FORMAT_JSON, PARSER_FORMAT_YAML,
-} from './parser.js';
+import parse from './parser.js';
 import genObjDiff from './genObjDiff.js';
 import formatObjDiff from './formatters/index.js';
 
 const readFile = (filePath) => fs.readFileSync(path.resolve(filePath));
-const getFormat = (filePath) => (
-  ({
-    json: PARSER_FORMAT_JSON,
-    yml: PARSER_FORMAT_YAML,
-    yaml: PARSER_FORMAT_YAML,
-  })[path.extname(filePath).slice(1)] ?? PARSER_FORMAT_ANY
-);
+const getFormat = (filePath) => path.extname(filePath).slice(1);
 
 const genDiff = (filePath1, filePath2, formatterName = 'stylish') => {
   const obj1 = parse(readFile(filePath1), getFormat(filePath1));

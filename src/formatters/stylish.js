@@ -45,13 +45,13 @@ const diffByKeyType = {
 
 const formatStylish = (objDiff) => {
   const iter = (diff, depth = 0) => (
-    wrap(diff.map(([key, {
-      type, value1, value2, children,
-    }]) => (
+    wrap(diff.flatMap(({
+      key, type, value1, value2, children,
+    }) => (
       diffByKeyType[type]({
         key, value1, value2, children,
       }, depth, iter)
-    )).flat(), '{', '}', tab.repeat(depth))
+    )), '{', '}', tab.repeat(depth))
   );
   return iter(objDiff);
 };
